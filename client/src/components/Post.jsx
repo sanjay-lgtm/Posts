@@ -33,7 +33,7 @@ const Post = ({ post }) => {
     const likeOrDislikeHandler = async () => {
         try {
             const action = liked ? 'dislike' : 'like';
-            const res = await axios.get(`http://localhost:10000/api/v1/post/${action}/${post._id}`, { withCredentials: true });
+            const res = await axios.get(`https://posts-0qau.onrender.com/api/v1/post/${action}/${post._id}`, { withCredentials: true });
             if (res.data.success) {
                 const updatedLikes = liked ? postLike - 1 : postLike + 1;
                 setPostLike(updatedLikes)
@@ -56,7 +56,7 @@ const Post = ({ post }) => {
 
     const commentHandler = async () => {
         try {
-            const res = await axios.post(`http://localhost:10000/api/v1/post/comment/${post?._id}`, { text }, {
+            const res = await axios.post(`https://posts-0qau.onrender.com/api/v1/post/comment/${post?._id}`, { text }, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -82,7 +82,7 @@ const Post = ({ post }) => {
     }
     const deletePostHandler = async () => {
         try {
-            const res = await axios.delete(`http://localhost:10000/api/v1/post/delete/${post?._id}`, { withCredentials: true });
+            const res = await axios.delete(`https://posts-0qau.onrender.com/api/v1/post/delete/${post?._id}`, { withCredentials: true });
             if (res.data.message) {
                 const updatedPostData = posts.filter((postItem) => postItem?._id !== post?._id)
                 dispatch(setPost(updatedPostData));
@@ -95,7 +95,7 @@ const Post = ({ post }) => {
 
     const bookmarkHandler = async () => {
         try {
-            const res = await axios.get(`http://localhost:10000/api/v1/post/bookmark/${post?._id}`, { withCredentials: true });
+            const res = await axios.get(`https://posts-0qau.onrender.com/api/v1/post/bookmark/${post?._id}`, { withCredentials: true });
             if (res.data.success) {
                 toast.success(res.data.message);
             }

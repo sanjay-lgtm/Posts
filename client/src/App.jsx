@@ -19,7 +19,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     if (user) {
-      const socketio = io('http://localhost:10000', {
+      const socketio = io('https://posts-0qau.onrender.com', {
         query: {
           userId: user?._id
         },
